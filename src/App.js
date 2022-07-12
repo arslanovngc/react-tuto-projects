@@ -1,4 +1,4 @@
-import Main from "./components/Tours/Main";
+import Main from "./components/Menu/Main";
 
 function App() {
   return (
