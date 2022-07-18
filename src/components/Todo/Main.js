@@ -49,7 +49,7 @@ const Main = () => {
   };
 
   const showAlert = (shown = false, type = "", msg = "") => {
-    return [];
+    setAlert({shown, type, msg});
   };
 
   const clearTodoList = () => {
