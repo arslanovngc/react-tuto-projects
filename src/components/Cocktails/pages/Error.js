@@ -12,7 +12,7 @@ const Error = () => {
 
         <div class="info-text">
           <h1>Page not found</h1>
-          <Link to="/" children="Home" className="btn btn-primary"/>
+          <Link to="/" children="Home" className="btn btn-primary" />
         </div>
       </div>
     </section>
