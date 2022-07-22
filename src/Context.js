@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect, useCallback, useContext } from "react";
 
-const urlDrink = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
-
 const AppContext = createContext();
+
+const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 
 const AppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,7 +13,7 @@ const AppProvider = ({ children }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${urlDrink}${searchTerm}`);
+      const response = await fetch(`${url}${searchTerm}`);
       const { drinks } = await response.json();
 
       if (drinks) {
@@ -27,11 +27,13 @@ const AppProvider = ({ children }) => {
           };
         });
         setCocktails(newCocktails);
+      } else {
+        setCocktails([]);
       }
     } catch (error) {
       console.log(error);
     }
-    
+
     setIsLoading(false);
   }, [searchTerm]);
 

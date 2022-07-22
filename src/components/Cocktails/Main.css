@@ -330,12 +330,16 @@ Form
 }
 .form-control input {
   width: 100%;
-  border: none;
-  border-color: transparent;
+  border: 1px solid transparent;
   background: var(--mainBackground);
   border-radius: var(--mainBorderRadius);
   padding: 0.5rem;
   font-size: 1.2rem;
+  outline: none;
+}
+.form-control input:hover,
+.form-control input:focus {
+  border-color: var(--primaryColor);
 }
 /* 
 ====== 
