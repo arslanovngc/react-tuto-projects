@@ -1,4 +1,4 @@
-import Main from "./components/Cocktails/Main";
+import Main from "./components/Pagination/Main";
 
 function App() {
   return (
