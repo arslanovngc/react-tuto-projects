@@ -1,4 +1,4 @@
-import Main from "./components/Pagination/Main";
+import Main from "./components/Dark Mode/Main";
 
 function App() {
   return (
