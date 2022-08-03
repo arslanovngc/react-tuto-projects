@@ -1,4 +1,4 @@
-import Main from "./components/Dark Mode/Main";
+import Main from "./components/Hacker News/Main";
 
 function App() {
   return (
