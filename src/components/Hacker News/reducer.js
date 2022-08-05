@@ -17,7 +17,7 @@ const reducer = (state, action) => {
       };
     }
     case REMOVE_STORY: {
-      return { 
+      return {
         ...state,
         hits: state.hits.filter((story) => story.objectID !== action.payload),
       };
@@ -25,7 +25,7 @@ const reducer = (state, action) => {
     case HANDLE_PAGE: {
       if (action.payload === "next") {
         let nextPage = state.page + 1;
-        if (nextPage >= state.nbPages - 1) {
+        if (nextPage > state.nbPages - 1) {
           nextPage = 0;
         }
         return {
@@ -50,6 +50,9 @@ const reducer = (state, action) => {
         query: action.payload,
         page: 0,
       };
+    }
+    default: {
+      console.log(`No matching ${action.type} action type`);
     }
   }
 };
