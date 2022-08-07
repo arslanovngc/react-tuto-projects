@@ -1,4 +1,4 @@
-import "axios";
+import axios from "axios";
 import { useState, useContext, useEffect, createContext } from "react";
 
 const Endpoint = "https://opentdb.com/api.php?";
@@ -18,7 +18,7 @@ const AppProvider = ({ children }) => {
     [isLoading, setIsLoading] = useState(false),
     [questions, setQuestions] = useState([]),
     [index, setIndex] = useState(0),
-    [correctAnswers, setIsCorrect] = useState(0),
+    [isCorrect, setIsCorrect] = useState(0),
     [error, setError] = useState(false),
     [quiz, setQuiz] = useState({
       amount: 15,
