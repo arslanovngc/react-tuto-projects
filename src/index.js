@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { AppProvider } from "./components/Hacker News/context";
+import { AppProvider } from "./components/Quiz/context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
