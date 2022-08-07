@@ -1,4 +1,4 @@
-import Main from "./components/Hacker News/Main";
+import Main from "./components/Quiz/Main";
 
 function App() {
   return (
