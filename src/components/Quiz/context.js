@@ -1,10 +1,8 @@
-import "axios";
+import axios from "axios";
 import { useState, useContext, useEffect, createContext } from "react";
 
 const Endpoint = "https://opentdb.com/api.php?";
 
-const url = "";
-const tempUrl = "https://opentdb.com/api.php?amount=15&category=18&difficulty=easy&type=boolean";
 const table = {
   computers: 18,
   sports: 21,
@@ -18,7 +16,7 @@ const AppProvider = ({ children }) => {
     [isLoading, setIsLoading] = useState(false),
     [questions, setQuestions] = useState([]),
     [index, setIndex] = useState(0),
-    [correctAnswers, setIsCorrect] = useState(0),
+    [correct, setCorrect] = useState(0),
     [error, setError] = useState(false),
     [quiz, setQuiz] = useState({
       amount: 15,
@@ -32,7 +30,6 @@ const AppProvider = ({ children }) => {
     setIsSettingUp(false);
 
     const resp = await axios(url).catch((e) => console.log(e));
-
     if (resp) {
       const data = resp.data.results;
 
@@ -64,7 +61,7 @@ const AppProvider = ({ children }) => {
 
   const checkAnswer = (value) => {
     if (value) {
-      setIsCorrect((old) => old + 1);
+      setCorrect((old) => old + 1);
     }
     nextQuestion();
   };
@@ -73,12 +70,23 @@ const AppProvider = ({ children }) => {
     setIsModalOpen(true);
   };
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setIsSettingUp(true);
+    setCorrect(0);
+  };
+
+  const handleChange = (e) => {
+    const [name, value] = [e.target.name, e.target.value];
+    setQuiz({ ...quiz, [name]: value });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const { amount, category, difficulty } = quiz;
 
-    const url = `${Endpoint}amount=${amount}$difficulty=${difficulty}&category=${table[category]}&type=boolean`;
+    const url = `${Endpoint}amount=${amount}&difficulty=${difficulty}&category=${table[category]}&type=multiple`;
     fetchQuestions(url);
   };
 
@@ -87,7 +95,7 @@ const AppProvider = ({ children }) => {
     isLoading,
     questions,
     index,
-    isCorrect,
+    correct,
     error,
     quiz,
     isModalOpen,
@@ -95,6 +103,8 @@ const AppProvider = ({ children }) => {
     nextQuestion,
     checkAnswer,
     openModal,
+    closeModal,
+    handleChange,
   };
 
   return <AppContext.Provider value={providerValue}>{children}</AppContext.Provider>;
