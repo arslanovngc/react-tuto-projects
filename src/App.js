@@ -1,10 +1,11 @@
-import Main from "./components/Quiz/Main";
+import { GithubProvider } from "./components/Github Users Dashboard/context/context";
+import Main from "./components/Github Users Dashboard/Main";
 
 function App() {
   return (
-    <div className="App">
+    <GithubProvider>
       <Main />
-    </div>
+    </GithubProvider>
   );
 }
 
