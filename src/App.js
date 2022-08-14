@@ -1,4 +1,4 @@
-import { GithubProvider } from "./components/Github User Dashboard/context/context;
+import { GithubProvider } from "./components/Github User Dashboard/context/context";
 import Main from "./components/Github User Dashboard/Main";
 
 function App() {
