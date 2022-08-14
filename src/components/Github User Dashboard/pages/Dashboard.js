@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Navbar, Info, Repos, User, Search } from "./../components";
+import { Navbar, Info, Repos, User, Search } from "../components";
 import loader from "./../images/preloader.gif";
 
 import { GithubContext } from "../context/context";

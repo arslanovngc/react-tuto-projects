@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { GithubContext } from "./../context/context";
+import { GithubContext } from "../context/context";
 import { MdBusiness, MdLocationOn, MdLink } from "react-icons/md";
 import { IoLogoTwitter } from "react-icons/io5";
 
