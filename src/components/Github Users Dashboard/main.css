@@ -80,8 +80,7 @@ a {
   text-decoration: none;
 }
 img {
-  width: 80%;
-  margin: 0 auto;
+  width: 100%;
   display: block;
 }
 
@@ -152,7 +151,8 @@ p {
   border-radius: var(--radius);
 }
 .btn:hover {
-  background: var(--clr-primary-3);
+  background: var(--clr-primary-8);
+  color: var(--clr-primary-1);
 }
 
 /* section */
@@ -180,4 +180,8 @@ p {
 }
 main {
   padding-bottom: 2rem;
+}
+.unknown {
+  color: var(--clr-red-dark);
+  opacity: 0.3;
 }
