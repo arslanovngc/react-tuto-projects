@@ -1,4 +1,5 @@
 import { useEffect, useState, createContext } from "react";
+import axios from "axios";
 import mockUser from "./mockData/mockUser";
 import mockRepos from "./mockData/mockRepos";
 import mockFollowers from "./mockData/mockFollowers";
@@ -12,6 +13,45 @@ const GithubProvider = ({ children }) => {
   const [user, setUser] = useState(mockUser);
   const [repos, setRepos] = useState(mockRepos);
   const [followers, setFollowers] = useState(mockFollowers);
+  const [requests, setRequests] = useState(0);
+  const [error, setError] = useState({ shown: false, msg: "" });
+
+  const searchHandler = async (user) => {
+    toggleError();
+    setIsLoading(true);
+
+    const resp = await axios(`${Endpoint}/users/${user}`).catch((e) => console.log(e));
+
+    if (resp) {
+      setUser(resp.data);
+
+      const { login, followers_url } = resp.data;
+
+      await Promise.allSettled([
+        axios(`${Endpoint}/users/${login}/repos?per_page=100`),
+        axios(`${followers_url}?per_page=100`),
+      ])
+        .then((results) => {
+          const [repos, followers] = results;
+          const status = "fulfilled";
+
+          if (repos.status === status) {
+            setRepos(repos.value.data);
+          }
+          if (followers.status === status) {
+            setFollowers(followers.value.data);
+          }
+        })
+        .catch((e) => console.log(e));
+    } else {
+      toggleError(true, "User not found!");
+    }
+    setIsLoading(false);
+  };
+
+  function toggleError(shown = false, msg = "") {
+    setError(shown, msg);
+  }
 
   const contextValue = {
     isLoading,

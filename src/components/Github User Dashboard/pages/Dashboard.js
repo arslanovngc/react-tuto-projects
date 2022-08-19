@@ -18,7 +18,7 @@ const Dashboard = () => {
   }
 
   return (
-    <main className="section section-center">
+    <main className="section">
       {/* <Navbar></Navbar> */}
       {/* <Search /> */}
       <Info />

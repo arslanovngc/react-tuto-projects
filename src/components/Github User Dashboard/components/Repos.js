@@ -27,10 +27,41 @@ const Repos = () => {
     })
     .slice(0, 5);
 
+  const mostPopular = Object.values(languages)
+    .sort((a, b) => {
+      return b.stars - a.stars;
+    })
+    .map((lang) => {
+      return { ...lang, value: lang.stars };
+    })
+    .slice(0, 5);
+
+  let { stars, forks } = repos.reduce(
+    (total, item) => {
+      const { stargazers_count, name, forks } = item;
+
+      total.stars[stargazers_count] = { label: name, value: stargazers_count };
+      total.forks[forks] = { label: name, value: forks };
+
+      return total;
+    },
+    { stars: {}, forks: {} }
+  );
+
+  const calc = (obj) => {
+    return Object.values(obj).slice(-5).reverse();
+  };
+
+  stars = calc(stars);
+  forks = calc(forks);
+
   return (
     <section className="section">
       <Wrapper className="section-center">
         <Pie data={mostUsed} />
+        <Column data={stars} />
+        <Doughnut data={mostPopular} />
+        <Bar data={forks} />
       </Wrapper>
     </section>
   );
