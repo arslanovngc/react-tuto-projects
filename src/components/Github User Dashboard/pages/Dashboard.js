@@ -18,12 +18,12 @@ const Dashboard = () => {
   }
 
   return (
-    <main>
+    <main className="section section-center">
       {/* <Navbar></Navbar> */}
       {/* <Search /> */}
       <Info />
       <User />
-      {/* <Repos /> */}
+      <Repos />
     </main>
   );
 };
