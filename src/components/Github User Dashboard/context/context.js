@@ -46,18 +46,46 @@ const GithubProvider = ({ children }) => {
     } else {
       toggleError(true, "User not found!");
     }
+    checkRequests();
     setIsLoading(false);
+  };
+
+  const checkRequests = () => {
+    axios(`${Endpoint}/rate_limit`)
+      .then(({ data }) => {
+        let {
+          rate: { remaining },
+        } = data;
+
+        setRequests(remaining);
+
+        if (remaining === 0) {
+          toggleError(true, "Sorry, you have not request limit yet!");
+        }
+      })
+      .catch((e) => console.log(e));
   };
 
   function toggleError(shown = false, msg = "") {
     setError(shown, msg);
   }
 
+  useEffect(() => {
+    checkRequests();
+  }, []);
+
+  useEffect(() => {
+    searchHandler("arslanov-ngc");
+  }, []);
+
   const contextValue = {
     isLoading,
     user,
     repos,
     followers,
+    requests,
+    error,
+    searchHandler,
   };
 
   return <GithubContext.Provider value={{ ...contextValue }}>{children}</GithubContext.Provider>;

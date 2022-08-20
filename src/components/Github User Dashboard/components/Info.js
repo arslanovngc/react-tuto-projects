@@ -54,7 +54,7 @@ const Card = ({ icon, label, value, color }) => {
   return (
     <article className="item">
       <span className={color}>{icon}</span>
-      <div>
+      <div className="card-label">
         <h3>{value}</h3>
         <p>{label}</p>
       </div>

@@ -30,6 +30,7 @@ const Wrapper = styled.article`
   border-bottom-left-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
   position: relative;
+  padding: 1rem 0;
   &::before {
     content: " followers";
     position: absolute;
@@ -46,12 +47,30 @@ const Wrapper = styled.article`
     font-size: 1rem;
   }
   .followers {
-    overflow: scroll;
+    overflow-y: scroll;
     height: 260px;
     display: grid;
     grid-template-rows: repeat(auto-fill, minmax(45px, 1fr));
     gap: 1.25rem 1rem;
     padding: 1rem 2rem;
+  }
+  .followers::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+  .followers::-webkit-scrollbar:vertical {
+    width: 8px;
+  }
+  .followers::-webkit-scrollbar:horizontal {
+    height: 8px;
+  }
+  .followers::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .followers::-webkit-scrollbar-track {
+    background-color: #fff;
+    border-radius: 8px;
   }
   article {
     transition: var(--transition);
