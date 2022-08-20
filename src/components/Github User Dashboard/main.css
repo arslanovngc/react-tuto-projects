@@ -172,8 +172,8 @@ p {
   }
 }
 .loading-img {
-  width: 20rem;
-  height: 20rem;
+  width: 10rem;
+  height: 10rem;
   display: block;
   margin: 0 auto;
   margin-top: 10rem;
@@ -184,4 +184,7 @@ main {
 .unknown {
   color: var(--clr-red-dark);
   opacity: 0.3;
+}
+.card-label {
+  text-align: center;
 }
