@@ -72,7 +72,7 @@ const GithubProvider = ({ children }) => {
 
   useEffect(() => {
     checkRequests();
-  }, [requests]);
+  });
 
   const contextValue = {
     isLoading,
