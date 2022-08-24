@@ -72,11 +72,7 @@ const GithubProvider = ({ children }) => {
 
   useEffect(() => {
     checkRequests();
-  }, []);
-
-  useEffect(() => {
-    searchHandler("arslanov-ngc");
-  }, []);
+  }, [requests]);
 
   const contextValue = {
     isLoading,
