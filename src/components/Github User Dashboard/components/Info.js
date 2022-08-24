@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { GithubContext } from "../context/context";
 import styled from "styled-components";
-import { GoRepo, GoGit, GoGist } from "react-icons/go";
+import { GoRepo, GoGist } from "react-icons/go";
 import { FiUsers, FiUserPlus } from "react-icons/fi";
 
 const Info = () => {

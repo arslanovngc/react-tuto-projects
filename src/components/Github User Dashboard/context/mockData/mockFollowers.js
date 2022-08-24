@@ -1,4 +1,4 @@
-export default [
+const data = [
   {
     login: "javohirbekkhaydarov",
     id: 79502483,
@@ -120,3 +120,5 @@ export default [
     site_admin: false,
   },
 ];
+
+export default data;

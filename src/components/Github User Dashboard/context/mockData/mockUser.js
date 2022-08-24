@@ -1,4 +1,4 @@
-export default {
+const data = {
   login: "arslanov-ngc",
   id: 88130228,
   node_id: "MDQ6VXNlcjg4MTMwMjI4",
@@ -32,3 +32,4 @@ export default {
   created_at: "2021-07-29T06:09:32Z",
   updated_at: "2022-08-14T04:22:54Z",
 };
+export default data;
